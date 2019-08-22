@@ -13,7 +13,7 @@ public class L1Cache {
 	 	L2Cache cacheFile;
 	    //the reason we use a map structure is that 
 	 	//we want to achieve constant time complexity for both put and get operation
-	    Map<String, DLinkedList> map;
+	    Map<Object, DLinkedList> map;
 	    //the reason we use a pesudo head and tail is that we want to mark the boundary so that we do't have to check 
 	    //node when we add or remove a DlinkedList
 	    DLinkedList head = new DLinkedList("Dummy head", 0);
@@ -24,7 +24,7 @@ public class L1Cache {
 	    int capacity;
 	    
 	    public L1Cache(int capacity) {
-	        map = new HashMap<String, DLinkedList>();
+	        map = new HashMap<Object, DLinkedList>();
 	        cacheFile = new L2Cache();
 	        this.capacity = capacity;
 	        head.setNext(tail);
@@ -62,7 +62,7 @@ public class L1Cache {
 	    //if we can't find key in our map, then try L2Cache
 	    //if we still can't find it
 	    //then we return null to indicate that there's no such record in our cache
-	    public Object get(String key) {
+	    public Object get(Object key) {
 	        if (map.containsKey(key)) {
 	            moveToHead(map.get(key));
 	            return map.get(key).getValue();
@@ -78,7 +78,7 @@ public class L1Cache {
 	        }
 	    }
 	    
-	    public void put(String key, Object value) {
+	    public void put(Object key, Object value) {
 	    	//if we already have the key, then we update the old value to new value
 	    	//then move the currently accessed DLinkedList to the position next to head
 	    	//otherwise, we create a new DLinkedList and add it the position next to head

@@ -24,7 +24,7 @@ public class L2Cache {
 	  * @param key
 	  * @return
 	  */
-	 public Object getFromFile(String key) {
+	 public Object getFromFile(Object key) {
 		 Object oOut = null;
 		 FileInputStream fis = null;
 		 try {

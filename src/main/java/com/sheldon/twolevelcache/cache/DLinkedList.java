@@ -5,29 +5,29 @@ package com.sheldon.twolevelcache.cache;
  *
  */
 public class DLinkedList {
-	private String key;
+	private Object key;
 	private Object value;
 	private DLinkedList pre;
 	private DLinkedList next;
 	
-	public DLinkedList(String key, Object value) {
+	public DLinkedList(Object key, Object value) {
 		super();
 		this.key = key;
 		this.value = value;
 	}
 
-	public DLinkedList(String key, Object value, DLinkedList pre, DLinkedList next) {
+	public DLinkedList(Object key, Object value, DLinkedList pre, DLinkedList next) {
 		this.key = key;
 		this.value = value;
 		this.pre = pre;
 		this.next = next;
 	}
 
-	public String getKey() {
+	public Object getKey() {
 		return key;
 	}
 
-	public void setKey(String key) {
+	public void setKey(Object key) {
 		this.key = key;
 	}
 
